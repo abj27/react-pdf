@@ -34,7 +34,7 @@ export const availableMethods = [
 ];
 
 const painter = function(instance) {
-  const p = availableMethods.reduce(
+  const p =  Object.keys(instance).reduce(
     (acc, prop) => ({
       ...acc,
       [prop]: (...args) => {
@@ -43,6 +43,7 @@ const painter = function(instance) {
       },
     }),
     {},
+
   );
 
   p.linearGradient = (...args) => instance.linearGradient(...args);
